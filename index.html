@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Travel Insurance</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f4f4f4; }
+        form { background: #fff; padding: 20px; border-radius: 8px; max-width: 500px; margin: auto; }
+        input, select { width: 100%; padding: 10px; margin: 10px 0; border-radius: 4px; border: 1px solid #ccc; }
+        button { padding: 10px 20px; background: #28a745; color: #fff; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #218838; }
+    </style>
+</head>
+<body>
+
+<h2>Travel Insurance Demo</h2>
+<form id="travelForm">
+    <label for="fullname">Full Name</label>
+    <input type="text" id="fullname" name="fullname" placeholder="John Doe" required data-gtm="fullname">
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" placeholder="john@example.com" required data-gtm="email">
+
+    <label for="destination">Destination</label>
+    <input type="text" id="destination" name="destination" placeholder="Country or City" required data-gtm="destination">
+
+    <label for="startdate">Start Date</label>
+    <input type="date" id="startdate" name="startdate" required data-gtm="startdate">
+
+    <label for="enddate">End Date</label>
+    <input type="date" id="enddate" name="enddate" required data-gtm="enddate">
+
+    <label for="travelers">Number of Travelers</label>
+    <input type="number" id="travelers" name="travelers" min="1" value="1" required data-gtm="travelers">
+
+    <button type="submit">Next</button>
+</form>
+
+<script>
+    const form = document.getElementById('travelForm');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Collect form data for tags
+        const formData = {
+            fullname: document.getElementById('fullname').value,
+            email: document.getElementById('email').value,
+            destination: document.getElementById('destination').value,
+            startdate: document.getElementById('startdate').value,
+            enddate: document.getElementById('enddate').value,
+            travelers: document.getElementById('travelers').value
+        };
+
+        console.log('Form Data for GTM:', formData); // You can later use GTM to capture this
+
+        // Save to sessionStorage for next page
+        sessionStorage.setItem('travelData', JSON.stringify(formData));
+
+        // Redirect to billing page
+        window.location.href = 'billing.html';
+    });
+</script>
+
+</body>
+</html>
