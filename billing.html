@@ -37,7 +37,6 @@
     form.addEventListener('submit', function(e) {
         e.preventDefault();
 
-        // Collect billing data for GTM
         const billingData = {
             cardname: document.getElementById('cardname').value,
             cardnumber: document.getElementById('cardnumber').value,
@@ -45,21 +44,15 @@
             cvv: document.getElementById('cvv').value
         };
 
-        console.log('Billing Data for GTM:', billingData); // You can later capture via GTM
+        console.log('Billing Data for GTM:', billingData);
 
-        // Combine travel + billing data for full tracking
         const travelData = JSON.parse(sessionStorage.getItem('travelData') || '{}');
         const purchaseData = { ...travelData, ...billingData };
 
         console.log('Full Purchase Data:', purchaseData);
 
-        // Show demo success
         alert('Purchase Completed! (Demo)');
-
-        // Clear session storage
         sessionStorage.clear();
-
-        // Redirect back to homepage
         window.location.href = 'index.html';
     });
 </script>
